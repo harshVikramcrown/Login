@@ -1,24 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import { Alert, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text} from 'react-native';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      username: '',
-      password: '',
-    };
-  }
+//export default class App extends Component {
+  export default function App(){
+ const [username, setusername] = useState('');
+ const [password, setpassword] = useState('');
   
-  onLogin() {
-    const { username, password } = this.state;
+    
 
-    Alert.alert('Credentials', `${username} + ${password}`);
-  }
-
-  render() {
+  
     return (
       
       
@@ -34,14 +25,14 @@ export default class App extends Component {
            <Image style={styles.image} source={require("./smile.png")}></Image>
           
         <TextInput
-          value={this.state.username}
-          onChangeText={(username) => this.setState({ username })}
+          value={username}
+          onChangeText={(username) =>setusername( username )}
           placeholder={'Username'}
           style={styles.input}
         />
         <TextInput
-          value={this.state.password}
-          onChangeText={(password) => this.setState({ password })}
+          value={password}
+          onChangeText={(password) =>setpassword( password )}
           placeholder={'Password'}
           secureTextEntry={true}
           style={styles.input}
@@ -50,11 +41,10 @@ export default class App extends Component {
         <Button
           title={'Login'}
           style={styles.input}
-          onPress={this.onLogin.bind(this)}
+          onPress={()=>Alert.alert('Hello There', `${username} + ${password}`)}
         />
         </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
