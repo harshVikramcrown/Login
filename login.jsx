@@ -5,7 +5,7 @@ import styles from './loginStyle';
 
 const Login=({navigation})=>{
     const [username, setusername] = useState(null);
- const [password, setpassword] = useState('');
+ const [password, setpassword] = useState(null);
 
   
     return (
@@ -17,20 +17,22 @@ const Login=({navigation})=>{
              <Text style={styles.description}>
           CAFE WIFI
         </Text>
+        
            <ImageBackground style={styles.backgroundImage} source={require("./b.jpg")}>
            </ImageBackground>
            <Image style={styles.image} source={require("./smile.png")}></Image>
           
         <TextInput
-          value={username}
+       value={username}
           onChangeText={(username) =>{
             setusername( username )}
-          
-          }
+            }
           placeholder={'Username'}
           style={styles.input}
         />
-        {username===""? (<Text>User Name Can't be empty!</Text>):null}
+
+        {username===""? (<Text>UserName Can't be empty!</Text>):null}
+        
         <TextInput
           value={password}
           onChangeText={(password) =>setpassword( password )}
@@ -38,7 +40,10 @@ const Login=({navigation})=>{
           secureTextEntry={true}
           style={styles.input}
         />
-        {password===""? (<Text>password can't be empty!</Text>):null}
+     
+{password===""? (<Text>password can't be empty!</Text>):null}
+       
+       
         <Button
           title={'Login'}
           style={styles.input}
